@@ -5,11 +5,11 @@ import Spinner from '../UI/spinner/spinner';
 
 export class RecipesList extends Component {
     render() {
-        const {recipes,handleDetail,value,handleChange,handleSubmit,error} = this.props;
-        
+        const {recipes,handleDetail,value,handleChange,handleSubmit,error,limit} = this.props;
+        console.log(limit);
         let recipeList = <Spinner />
         if(recipes){
-        recipeList = error ? <h1 className="text-danger mx-auto text-center">{error}</h1>:
+        recipeList = (
                         recipes.map(recipe => {
                             return (
                                 <Recipes 
@@ -18,7 +18,14 @@ export class RecipesList extends Component {
                                     handleDetail={handleDetail}
                                     />
                             )
-                        })
+                        }))
+        }
+        if(limit){
+          recipeList = <h1 className="text-danger mx-auto text-center">sorry,query reaches its maximum limit.please,try again later.</h1>
+        }
+        if(recipes === null){
+            recipeList =  error ? <h1 className="text-danger mx-auto text-center">{error}</h1>:
+             <Spinner/>
         }
 
         return (

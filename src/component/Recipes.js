@@ -21,7 +21,7 @@ export class Recipes extends Component {
             <img src={image_url} alt="recipe" style={{width:"300px",height:"300px"}}/>
             </div>
             <div className="flip-card-back">
-                <h1>{title}</h1> 
+                <h2>{title}</h2> 
                 <p className="text-warning">{publisher}</p> 
                 <button className="button text-uppercase" 
                  onClick={() => handleDetail(0, recipe_id)}>Detail</button>

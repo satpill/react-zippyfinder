@@ -6,13 +6,14 @@ import RecipesDetail from './component/RecipesDetails';
 export class App extends Component {
     state = {
       recipes: null,
-      url:"https://cors-anywhere.herokuapp.com/www.food2fork.com/api/search?key=fb63426b87953885cce8207f88a36cf5",
-      base_url:"https://cors-anywhere.herokuapp.com/www.food2fork.com/api/search?key=fb63426b87953885cce8207f88a36cf5",
+      url:"https://cors-anywhere.herokuapp.com/www.food2fork.com/api/search?key=5abf73cca421be4b680ef1e001493ced",
+      base_url:"https://cors-anywhere.herokuapp.com/www.food2fork.com/api/search?key=5abf73cca421be4b680ef1e001493ced",
       detail_id: 35382,
       pageindex:1,
       search: "",
       query:"&q=",
-      error:""
+      error:"",
+      limit:false
     };
 
       async getrecipe() {
@@ -21,7 +22,7 @@ export class App extends Component {
           const jsonData = await data.json();
           if(jsonData.recipes.length === 0){
              this.setState(() => {
-                return {error:"sorry, but search is not return anything"}
+                return {error:"sorry,it is not available"}
              })
           }else{
             this.setState(() => {
@@ -30,7 +31,10 @@ export class App extends Component {
           }
           
         }catch(error){
-          console.log(error);
+          if(error){ this.setState(() => {
+            return {limit: true}
+          })}
+          console.log('it is error');
         }
       }
 
@@ -43,7 +47,7 @@ export class App extends Component {
           default:
             case 1:
                return (<RecipesList recipes={this.state.recipes} handleDetail={this.handleDetail}
-                       value={this.state.search} handleChange={this.handleChange} handleSubmit={this.handleSubmit} error={this.state.error}/>)
+                       value={this.state.search} handleChange={this.handleChange} handleSubmit={this.handleSubmit} error={this.state.error} limit={this.state.limit}/>)
             case 0:
               return (<RecipesDetail id={this.state.detail_id} handleIndex={this.handleIndex}/>)
         }

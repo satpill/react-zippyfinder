@@ -9,7 +9,7 @@ state={
 }
 async componentDidMount(){
     const id = this.props.id;
-    const url=`https://cors-anywhere.herokuapp.com/www.food2fork.com/api/get?key=fb63426b87953885cce8207f88a36cf5&rId=${id}`;
+    const url=`https://cors-anywhere.herokuapp.com/www.food2fork.com/api/get?key=5abf73cca421be4b680ef1e001493ced&rId=${id}`;
             try{
                     const data = await fetch(url);
                     const jsonData = await data.json();
