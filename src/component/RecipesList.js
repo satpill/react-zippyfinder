@@ -6,7 +6,6 @@ import Spinner from '../UI/spinner/spinner';
 export class RecipesList extends Component {
     render() {
         const {recipes,handleDetail,value,handleChange,handleSubmit,error,limit} = this.props;
-        console.log(limit);
         let recipeList = <Spinner />
         if(recipes){
         recipeList = (

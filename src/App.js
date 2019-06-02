@@ -34,7 +34,6 @@ export class App extends Component {
           if(error){ this.setState(() => {
             return {limit: true}
           })}
-          console.log('it is error');
         }
       }
 
@@ -83,7 +82,6 @@ export class App extends Component {
       }
 
   render(){
-    console.log(this.state.recipes);
     
     return (
     <React.Fragment>

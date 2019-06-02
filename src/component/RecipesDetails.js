@@ -18,7 +18,6 @@ async componentDidMount(){
                     };
                 }, ()=>{});
                   }catch(error){
-                    console.log(error);
                   }
                 }
 
